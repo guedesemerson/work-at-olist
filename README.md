@@ -34,13 +34,13 @@ Your application will be running at `http://127.0.0.1:8000`.  You can access the
 
 To import authors in database you need to execute this script following this format:
 
-name
-author1
-author2
-author3
-author4
-author5
-author6
+name<br>
+author1<br>
+author2<br>
+author3<br>
+author4<br>
+author5<br>
+author6<br>
 ...
 
 ``bash
