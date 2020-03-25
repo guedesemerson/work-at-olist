@@ -43,12 +43,12 @@ author5<br>
 author6<br>
 ...
 
-``bash
+bash:<br>
 python manage.py import_authors file.csv
 
 
 
 ### Testing enpoints
 
-``bash
+bash:<br>
 python manage.py test
