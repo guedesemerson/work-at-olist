@@ -1,4 +1,6 @@
 import os
+from decouple import config
+from dj_database_url import parse as dburl
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -8,12 +10,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 
-SECRET_KEY = '!9-o^iujr=45o09x0=zzhfld9j7i_d@86mexj+o+m%*9^_686%'
+SECRET_KEY =config('SECRET_KEY')
 
 
-DEBUG = True
+DEBUG =config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1','olistapichallenge.herokuapp.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -58,13 +60,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'libraryproject.wsgi.application'
 
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
+DATABASES = { 'default': config('DATABASE_URL', default=default_dburl, cast=dburl), }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -98,3 +95,4 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 5
 }
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
