@@ -48,7 +48,7 @@ python manage.py import_authors file.csv
 
 
 
-### Testing enpoints
+### Testing endpoints
 
 bash:<br>
 python manage.py test
